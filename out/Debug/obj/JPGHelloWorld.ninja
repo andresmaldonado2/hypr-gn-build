@@ -1,0 +1,19 @@
+defines = -D_DEBUG
+include_dirs = -I/usr/include -I/usr/local/include -I/home/sora/Documents/skia
+cflags = -fno-strict-aliasing -funwind-tables -fPIC -pipe -fdiagnostics-color -m64 -march=x86-64 -fstack-protector-strong -pthread -O0 -fno-omit-frame-pointer -g2 -fvisibility=hidden
+cflags_cc = -fvisibility-inlines-hidden -std=c++1z -frtti -fexceptions
+label_name = JPGHelloWorld
+target_out_dir = obj
+target_output_name = JPGHelloWorld
+
+build obj/JPGHelloWorld/JPGHelloWorld.o: cxx ../../src/JPGHelloWorld.cpp
+  source_file_part = JPGHelloWorld.cpp
+  source_name_part = JPGHelloWorld
+
+build ./JPGHelloWorld: link obj/JPGHelloWorld/JPGHelloWorld.o | ../../../skia/out/Debug/libskia.a ../../../skia/out/Debug/libskia.so
+  ldflags = -Wl,--fatal-warnings -fPIC -Wl,-z,noexecstack -Wl,-z,now -Wl,-z,relro -Wl,--as-needed -m64 -pthread -Wl,-rpath=\$$ORIGIN -Wl,-rpath-link=. -Wl,--disable-new-dtags -Wl,-z,defs -L/usr/lib -L/usr/lib64 -L/usr/local/lib -L/usr/local/lib64 -L/home/sora/Documents/skia/out/Debug
+  libs = /home/sora/Documents/skia/out/Debug/libskia.a /home/sora/Documents/skia/out/Debug/libskia.so -ldl -lrt
+  frameworks =
+  swiftmodules =
+  output_extension = 
+  output_dir = .

@@ -1,0 +1,5 @@
+is_official_build = false
+is_component_build = true
+is_debug = true
+cc = "clang"
+cxx = "clang++"
